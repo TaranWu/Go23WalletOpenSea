@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'Go23WalletOpenSea_Example' do
+  pod 'Go23WalletOpenSea', :path => '../'
+
+  target 'Go23WalletOpenSea_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
