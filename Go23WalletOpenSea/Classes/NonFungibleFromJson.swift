@@ -43,5 +43,5 @@ public protocol NonFungibleFromJson: Codable {
     var transferFee: String? { get }
     var slug: String { get }
     var creator: AssetCreator? { get }
-    var collection: DerbyWalletOpenSea.Collection? { get }
+    var collection: Go23WalletOpenSea.Collection? { get }
 }

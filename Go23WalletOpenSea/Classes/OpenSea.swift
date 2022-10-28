@@ -5,15 +5,16 @@
 //  Created by Hwee-Boon Yar on Apr/29/22.
 //
 
-import DerbyWalletAddress
-import DerbyWalletCore
+import Go23WalletAddress
+import Go23WalletCore
 import PromiseKit
 import SwiftyJSON
+import Alamofire
 
 public typealias ChainId = Int
 public typealias OpenSeaAddressesToNonFungibles = [DerbyWallet.Address: [OpenSeaNonFungible]]
 
-public protocol OpenSeaDelegate: class {
+public protocol OpenSeaDelegate: AnyObject {
     func openSeaError(error: OpenSeaApiError)
 }
 
@@ -51,13 +52,13 @@ public class OpenSea {
     public func fetchAssetsPromise(address owner: DerbyWallet.Address, chainId: ChainId, excludeContracts: [(DerbyWallet.Address, ChainId)]) -> Promise<Response<OpenSeaAddressesToNonFungibles>> {
         let offset = 0
         //NOTE: some of OpenSea collections have an empty `primary_asset_contracts` array, so we are not able to identifyto each asset connection relates. it solves with `slug` field for collection. We match assets `slug` with collections `slug` values for identification
-        func findCollection(address: DerbyWallet.Address, asset: OpenSeaNonFungible, collections: [CollectionKey: DerbyWalletOpenSea.Collection]) -> DerbyWalletOpenSea.Collection? {
+        func findCollection(address: DerbyWallet.Address, asset: OpenSeaNonFungible, collections: [CollectionKey: Go23WalletOpenSea.Collection]) -> Go23WalletOpenSea.Collection? {
             return collections[.address(address)] ?? collections[.slug(asset.slug)]
         }
 
         //NOTE: Due to OpenSea's policy of sending requests, (we are not able to sent multiple requests, the request trottled, and 1 sec delay is needed)
         //to send a new one. First we send fetch assets requests and then fetch collections requests
-        typealias OpenSeaAssetsAndCollections = (OpenSeaAddressesToNonFungibles, [CollectionKey: DerbyWalletOpenSea.Collection])
+        typealias OpenSeaAssetsAndCollections = (OpenSeaAddressesToNonFungibles, [CollectionKey: Go23WalletOpenSea.Collection])
 
         let assetsPromise = fetchAssetsPage(forOwner: owner, chainId: chainId, offset: offset, excludeContracts: excludeContracts)
         let collectionsPromise = fetchCollectionsPage(forOwner: owner, chainId: chainId, offset: offset)
@@ -185,14 +186,7 @@ public class OpenSea {
                         } else {
                             throw OpenSeaError(localizedDescription: "Error calling \(url)")
                         }
-                    }).recover { error -> Promise<(HTTPURLResponse, JSON)> in
-                        if let error = error as? OpenSeaApiError {
-                            self.delegate?.openSeaError(error: error)
-                        } else {
-                            //no-op
-                        }
-                        throw error
-                    }
+                    })
         }
 
         let delayUpperRangeValueFrom0To: Int = delayMultiplayer

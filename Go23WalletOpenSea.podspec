@@ -36,4 +36,7 @@ Pod::Spec.new do |s|
   s.dependency 'Go23WalletCore'
   s.dependency 'PromiseKit'
   s.dependency 'SwiftyJSON', '5.0.0'
+  s.dependency 'PromiseKit/Alamofire'
+  s.dependency 'PromiseKit/CorePromise'
+    
 end

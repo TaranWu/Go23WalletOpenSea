@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import DerbyWalletAddress
+import Go23WalletAddress
 
 public enum CollectionKey: Hashable {
     case address(DerbyWallet.Address)

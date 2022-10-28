@@ -1,8 +1,8 @@
 //
 //  OpenSeaNonFungible.swift
-//  DerbyWalletOpenSea
+//  Go23WalletOpenSea
 //
-//  Created by Hwee-Boon Yar on Apr/30/22.
+//  Created by Taran
 //
 
 import Foundation
@@ -57,12 +57,12 @@ public struct OpenSeaNonFungible: Codable, Equatable, Hashable, NonFungibleFromJ
     public var issuer: String?
     public var created: String?
     public var transferFee: String?
-    public var collection: DerbyWalletOpenSea.Collection?
+    public var collection: Go23WalletOpenSea.Collection?
     public var creator: AssetCreator?
     public let slug: String
 
     //TODO remove when we aren't calling from outside the pod
-    public init(tokenId: String, tokenType: NonFungibleFromJsonTokenType, value: BigInt, contractName: String, decimals: Int, symbol: String, name: String, description: String, thumbnailUrl: String, imageUrl: String, contractImageUrl: String, externalLink: String, backgroundColor: String?, traits: [OpenSeaNonFungibleTrait], collectionCreatedDate: Date?, collectionDescription: String?, meltStringValue: String? = nil, meltFeeRatio: Int? = nil, meltFeeMaxRatio: Int? = nil, totalSupplyStringValue: String? = nil, circulatingSupplyStringValue: String? = nil, reserveStringValue: String? = nil, nonFungible: Bool? = nil, blockHeight: Int? = nil, mintableSupply: BigInt? = nil, transferable: String? = nil, supplyModel: String? = nil, issuer: String? = nil, created: String? = nil, transferFee: String? = nil, collection: DerbyWalletOpenSea.Collection? = nil, creator: AssetCreator?, slug: String) {
+    public init(tokenId: String, tokenType: NonFungibleFromJsonTokenType, value: BigInt, contractName: String, decimals: Int, symbol: String, name: String, description: String, thumbnailUrl: String, imageUrl: String, contractImageUrl: String, externalLink: String, backgroundColor: String?, traits: [OpenSeaNonFungibleTrait], collectionCreatedDate: Date?, collectionDescription: String?, meltStringValue: String? = nil, meltFeeRatio: Int? = nil, meltFeeMaxRatio: Int? = nil, totalSupplyStringValue: String? = nil, circulatingSupplyStringValue: String? = nil, reserveStringValue: String? = nil, nonFungible: Bool? = nil, blockHeight: Int? = nil, mintableSupply: BigInt? = nil, transferable: String? = nil, supplyModel: String? = nil, issuer: String? = nil, created: String? = nil, transferFee: String? = nil, collection: Go23WalletOpenSea.Collection? = nil, creator: AssetCreator?, slug: String) {
         self.tokenId = tokenId
         self.tokenType = tokenType
         self.value = value

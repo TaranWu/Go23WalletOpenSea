@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import DerbyWalletAddress
+import Go23WalletAddress
 import SwiftyJSON
 
 public struct PrimaryAssetContract: Codable {
