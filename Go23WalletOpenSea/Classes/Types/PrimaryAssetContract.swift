@@ -1,8 +1,8 @@
 //
 //  PrimaryAssetContract.swift
-//  DerbyWalletOpenSea
+//  Go23WalletOpenSea
 //
-//  Created by Vladyslav Shepitko on 31.01.2022.
+//  Created by Taran on 31.01.2022.
 //
 
 import Foundation
@@ -10,7 +10,7 @@ import Go23WalletAddress
 import SwiftyJSON
 
 public struct PrimaryAssetContract: Codable {
-    let address: DerbyWallet.Address
+    let address: Go23Wallet.Address
     let assetContractType: String
     let createdDate: String
     let name: String
@@ -24,8 +24,8 @@ public struct PrimaryAssetContract: Codable {
     let imageUrl: String
 
     init(json: JSON) throws {
-        guard let address = DerbyWallet.Address(string: json["address"].stringValue) else {
-            throw OpenSeaAssetDecoder.DecoderError.jsonInvalidError
+        guard let address = Go23Wallet.Address(string: json["address"].stringValue) else {
+            throw NftAssetsPageDecoder.DecoderError.jsonInvalidError
         }
 
         self.address = address

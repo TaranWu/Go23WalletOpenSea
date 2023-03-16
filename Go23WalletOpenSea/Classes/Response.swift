@@ -1,8 +1,8 @@
 //
 //  Response.swift
-//  DerbyWalletOpenSea
+//  Go23WalletOpenSea
 //
-//  Created by Hwee-Boon Yar on Apr/30/22.
+//  Created by Taran on Apr/30/22.
 //
 
 import Foundation

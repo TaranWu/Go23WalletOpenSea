@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Go23WalletOpenSea'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Go23Wallet OpenSea functionality'
 
   s.description      = 'OpenSea functionality'
@@ -36,7 +36,5 @@ Pod::Spec.new do |s|
   s.dependency 'Go23WalletCore'
   s.dependency 'PromiseKit'
   s.dependency 'SwiftyJSON', '5.0.0'
-  s.dependency 'PromiseKit/Alamofire'
-  s.dependency 'PromiseKit/CorePromise'
     
 end
